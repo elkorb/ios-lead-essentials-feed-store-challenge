@@ -33,11 +33,11 @@ public final class CoreDataFeedStore: FeedStore {
 	}
 
 	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-		fatalError("Must be implemented")
+//		fatalError("Must be implemented")
 	}
 
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-		fatalError("Must be implemented")
+//		fatalError("Must be implemented")
 	}
 }
 
@@ -45,4 +45,13 @@ public final class CoreDataFeedStore: FeedStore {
 private class ManagedCache: NSManagedObject {
 	@NSManaged var timestamp: Date
 	@NSManaged var feed: NSOrderedSet
+}
+
+@objc(ManagedFeedImage)
+private class ManagedFeedImage: NSManagedObject {
+	@NSManaged var id: UUID
+	@NSManaged var imageDescription: String?
+	@NSManaged var location: String?
+	@NSManaged var url: URL
+	@NSManaged var cache: ManagedCache
 }
